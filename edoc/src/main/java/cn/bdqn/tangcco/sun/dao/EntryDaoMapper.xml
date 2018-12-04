@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.tangcco.sun.dao.EntryDaoMapper">
+
+    <resultMap id="eMap" type="Entry">
+
+        <id property="eid" column="eid"></id>
+        <result property="cid" column="cid"></result>
+
+
+    </resultMap>
+
+    <select id="queryAll" resultMap="eMap" parameterType="entry">
+        select * from entry
+
+
+        <where>
+            <if test="cid!=null and cid!=''">
+                and  cid=#{cid}
+            </if>
+        </where>
+
+
+
+    </select>
+    <delete id="deleteEntryById" parameterType="int" >
+
+        delete from entry where eid=#{eid}
+    </delete>
+
+
+
+
+
+
+
+</mapper>
